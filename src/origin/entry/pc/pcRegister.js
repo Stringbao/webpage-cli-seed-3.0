@@ -1,5 +1,5 @@
 import "@css/pc/pcRegister.scss";
-import Engine from "@services/register.js";
+import Engine from "@src/main/Engine.js";
 import PCRegister from "@vpc/Register.js";
 
 let _engine = new Engine();
