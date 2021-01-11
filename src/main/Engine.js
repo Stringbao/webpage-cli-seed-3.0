@@ -12,10 +12,6 @@
 
 export default class Engine{
     constructor(){
-        this._checkoutView = null;
-        this._addressView = null;
-        this._couponView = null;
-
         this._servicesMap = {};
 
         this._currentView = null;
