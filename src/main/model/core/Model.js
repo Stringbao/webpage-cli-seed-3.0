@@ -1,18 +1,14 @@
 
 export default class BaseModel{
     constructor(){
+       
+    }
+
+    init(data){
         
     }
 
-    get(){
-
-    }
-
-    set(){
-        
-    }
-
-    init(){
-
+    reset(){
+        this.init();
     }
 }

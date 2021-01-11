@@ -10,37 +10,17 @@
 
 //services不允许直接调用view
 
-import RegisterService from "@modelServices/Register.js";
-
-export default class Engine{
+class Engine{
     constructor(){
-        this._servicesMap = {};
-
         this._currentView = null;
         this._currentPopupViews = [];
-
-        this.registerServices();
-    }
-
-    registerService(serviceName, services){
-        this._servicesMap[serviceName] = services;
-    }
-
-    getService(serviceName){
-        return this._servicesMap[serviceName];
-    }
-
-    removePopupView(){
         
+        window.$engine = this;
     }
 
     popup(view){
         view.init();
         this._currentPopupViews.push(view);
-    }
-
-    registerServices(){
-        this.registerService(RegisterService.getName(), new RegisterService());
     }
 
     show(view){
@@ -49,3 +29,5 @@ export default class Engine{
         }
     }
 }
+
+export default new Engine();

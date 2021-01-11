@@ -1,5 +1,4 @@
 import Factory from "./Factory";
-import Constant from "@constant/index.js";
 
 //如果 PC mobile  tablet公用一套view，只需在声明的时候指向一个view即可
 
@@ -32,6 +31,6 @@ export default class ViewFactory extends Factory{
     }
 }
 
-ViewFactory.prototype[Constant.MODEL_TYPES.REGISTER.TYPE] = (data)=>{
+ViewFactory.prototype[CONSTANT.MODEL_TYPES.REGISTER.TYPE] = (data)=>{
     return createViewByType(RegisterPC, RegisterMobile, RegisterTablet, data);
 }

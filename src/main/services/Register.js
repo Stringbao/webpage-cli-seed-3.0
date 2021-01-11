@@ -1,52 +1,15 @@
 
 class RegisterService{
-    static getName(){
-        return CONSTANT.SERVICE_NAME.REGISTER;
-    }
-
     constructor(){
-        
+        this._name = CONSTANT.SERVICE_NAME.REGISTER;
     }
 
-    validata(model){
-        let count = 0;
-        let errorKeys = [];
-        return new Promise((resolve, reject)=>{
-            model.validateEmail();
-            model.validateFirstName();
-            model.validateLastName();
-            model.validatePassword();
-            model.validateConfirmPassword();
-            if(!model._email.validate){
-                count++;
-                errorKeys.push("_email");
-            }
-            if(!model._firstName.validate){
-                count++;
-                errorKeys.push("_firstName");
-            }
-            if(!model._lastName.validate){
-                count++;
-                errorKeys.push("_lastName");
-            }
-            if(!model._password.step1.validate || !model._password.step2.validate){
-                count++;
-                errorKeys.push("_password");
-            }
-            if(!model._confirmPassword.validate){
-                count++;
-                errorKeys.push("_confirmPassword");
-            }
-            if(!model._recaptchaResponse){
-                count++;
-                errorKeys.push("_recaptchaResponse");
-            }
-            if(count>0){
-                reject(errorKeys);
-            }else{
-                resolve();
-            }
-        })
+    getName(){
+        return this._name;
+    }
+
+    resetRegister(model){
+        model.reset();
     }
 
     doRegister(model){
@@ -69,6 +32,4 @@ class RegisterService{
     }
 }
 
-// $engine.registerService(RegisterService.getName(), new RegisterService());
-
-export default RegisterService;
+export default new RegisterService();

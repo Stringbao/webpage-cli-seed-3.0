@@ -1,18 +1,17 @@
 
 import BaseView from "@model/core/View.js";
 import ModelFactory from "@factory/ModelFactory.js";
-import Constant from "@constant/index.js";
 import Intercept from "@observer/Intercept.js";
+import RegisterService from "@modelServices/Register.js";
+import Helper from "@helper/Register.js";
 
 export default class RegisterPCView extends BaseView{
     constructor(container){
         super(container);
 
-        this._eventCenter = new RegisterEvent();
-
+        this._eventCenter = null;
         this._el = $(container);
-
-        this._model = new ModelFactory().create(Constant.MODEL_TYPES.REGISTER.TYPE, {});
+        this._model = new ModelFactory().create(CONSTANT.MODEL_TYPES.REGISTER.TYPE, {});
     }
 
     interceptList() {
@@ -63,42 +62,27 @@ export default class RegisterPCView extends BaseView{
         this.interceptList();
         this.registerEvent();
 
-        this.setUsingStatus();
+        this._eventCenter = new RegisterEvent();
+        this.setViewStatus(CONSTANT.VIEW.STATUS.USING);
     }
 }
 
 class RegisterEvent{
-    //doRegister
     doRegister(sender, data){
         let view = data.view;
         let model = view._model;
-        let params = {
-            _email:view._emailEl.val(),
-            _firstName:view._firstNameEl.val(),
-            _lastName:view._lastNameEl.val(),
-            _password:view._passwordEl.val(),
-            _confirmPassword:view._confirmPasswordEl.val(),
-            _isSubscriber:view._isSubscriberEl.get(0).checked,
-            _rewardsSignup:view._rewardsSignupEl.get(0).checked,
-            _isAgreePrivacy:view._isAgreePrivacyEl.get(0).checked,
-            _recaptchaResponse:grecaptcha.getResponse()
-        }
-
-        // model.init(params);
-
-        let service = $engine.getService(CONSTANT.SERVICE_NAME.REGISTER);
-        debugger
-        service.validata(model).then(x=>{
-            service.doRegister(model).then(xx=>{
-                debugger
+        Helper.validata(model).then(x=>{
+            RegisterService.doRegister(model).then(xx=>{
             }).catch(err=>{
-                debugger
+                model.reset();
                 model._validateAjax.showError = true;
                 model._validateAjax.errorMsg = err.msg;
                 grecaptcha.reset();
+                $(document).scrollTop(0);
             })
         }).catch(err=>{
-            debugger
+            view.destory();
+            $(document).scrollTop(0);
             grecaptcha.reset();
         })
     }
@@ -120,27 +104,27 @@ class RegisterEvent{
     }
 
     blurEmail(sender, data){
-        data.view._model.validateEmail();
+        Helper.validateEmail(data.view._model);
         this.notNone(sender);
     }
 
     blurFName(sender, data){
-        data.view._model.validateFirstName();
+        Helper.validateFirstName(data.view._model);
         this.notNone(sender);
     }
 
     blurLName(sender, data){
-        data.view._model.validateLastName();
+        Helper.validateLastName(data.view._model);
         this.notNone(sender);
     }
 
     inputPwd(sender, data){
-        data.view._model.validatePassword();
+        Helper.validatePassword(data.view._model);
         this.notNone(sender);
     }
 
     blurCPwd(sender, data){
-        data.view._model.validateConfirmPassword();
+        Helper.validateConfirmPassword(data.view._model);
         this.notNone(sender);
     }
 
