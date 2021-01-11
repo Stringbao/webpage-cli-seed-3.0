@@ -44,6 +44,7 @@ module.exports = {
             "@assets": path.resolve(__dirname,'..','./src/assets'),
             "@constant":path.resolve(__dirname,"..","./src/constant"),
             "@model":path.resolve(__dirname,"..","./src/main/model"),
+            "@modelServices":path.resolve(__dirname,"..","./src/main/services"),
             "@helper":path.resolve(__dirname,"..","./src/main/helper"),
             "@util": path.resolve(__dirname,'..','./src/util'),
             "@observer": path.resolve(__dirname,'..','./src/main/observer'),
