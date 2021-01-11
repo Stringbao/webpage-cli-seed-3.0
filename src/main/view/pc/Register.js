@@ -84,7 +84,7 @@ class RegisterEvent{
             _recaptchaResponse:grecaptcha.getResponse()
         }
 
-        model.init(params);
+        // model.init(params);
 
         let service = $engine.getService(CONSTANT.SERVICE_NAME.REGISTER);
         debugger
