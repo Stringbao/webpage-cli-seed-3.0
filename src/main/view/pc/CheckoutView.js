@@ -17,6 +17,18 @@ export default class CheckoutView extends BaseView{
         this._placeOrderView = new ViewFactory().create(CONSTANT.TYPES.PLACE_ORDER, {device:$engine._device});
         this._quoteView = new ViewFactory().create(CONSTANT.TYPES.QUOTE, {device:$engine._device});
         this._signUpView = new ViewFactory().create(CONSTANT.TYPES.SIGN_UP, {device:$engine._device});
+    
+        this._progressObject = flash_fe_core_tool.$customer_events.on("indexChanged");
+    }
+
+    setProgressIndex(index){
+        this._progressObject.setIndex(index);
+    }
+
+    notice(){
+        flash_fe_core_tool.$event_publisher.on("progressChanged",(idx)=>{
+            this.setProgressIndex(idx);
+        })
     }
     
     init(){

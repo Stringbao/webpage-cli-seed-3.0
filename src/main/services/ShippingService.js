@@ -4,9 +4,8 @@ class ShippingService{
         this._name = CONSTANT.TYPES.SHIPPING;
     }
 
-    setShippingData(model){
-        let tmp = flash_fe_core_tool.$customer_events.on("shipping");
-        tmp.setValue(model._data);
+    changeDelivery(){
+        
     }
 }
 

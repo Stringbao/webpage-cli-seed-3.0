@@ -18,8 +18,8 @@ export default class ShippingDeliveryView extends BaseView{
     }
 
     init(data, shippingModel){
-        shippingModel._shippingDelivery = this._model;
         this._model.init(data);
+        shippingModel._shippingDelivery = this._model;
         this.render();
     }
 }
