@@ -10,6 +10,10 @@
 
 //services不允许直接调用view
 
+//模块的拆分标准有2个：
+//1：子模块可以自由组合
+//2：业务逻辑过于复杂，不拆开不便于维护
+
 import ViewFactory from "@factory/ViewFactory.js";
 
 class Engine{
