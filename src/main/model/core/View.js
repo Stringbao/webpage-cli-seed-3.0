@@ -3,10 +3,12 @@ export default class BaseView{
         this._el = null;
         this._model = model;
 
-        //0: 准备就绪
-        //1: 使用中
-        //3: 卸载
-        this._status = CONSTANT.VIEW.STATUS.READY;
+        this._enabled = true;
+
+        //0: 隐藏
+        //1: 显示
+        //2: 卸载
+        this._status = CONSTANT.VIEW.STATUS.SHOW;
         //USUALLY: 常规视图
         //POPUP: popup 视图
         this._type = CONSTANT.VIEW.TYPES.USUALLY;
@@ -18,6 +20,14 @@ export default class BaseView{
     //CONSTANT.VIEW.STATUS.UNINSTALL;
     setViewStatus(status){
         this._status = status;
+    }
+
+    show(){
+        this._el && this._el.show();
+    }
+
+    hide(){
+        this._el && this._el.hide();
     }
 
     destory(){

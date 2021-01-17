@@ -3,23 +3,22 @@ import Factory from "./Factory";
 //如果 PC mobile  tablet公用一套view，只需在声明的时候指向一个view即可
 
 /*********************  PC *********************************/
-import RegisterPC from "@vpc/Register.js";
+import CheckoutPC from "@vpc/Checkout.js";
 
 /*********************  Wap *********************************/
-import RegisterMobile from "@vpc/Register.js";
+import CheckoutMobile from "@vmobile/mCheckout.js";
 
 /********************* tablet *********************************/
-import RegisterTablet from "@vpc/Register.js";
+import CheckoutTablet from "@vtablet/tCheckout.js";
 
 const createViewByType = (pcType, mobileType, tabletType, data) => {
-    let model = data.model;
-    let obj = new pcType(model);
-    switch(data.deviceType){
+    let obj = new pcType();
+    switch(data.device){
         case flash_fe_core_tool.$CONSTANT.TERMINAL.MOBILE:
-            obj = new mobileType(model);
+            obj = new mobileType();
             break;
         case flash_fe_core_tool.$CONSTANT.TERMINAL.TABLET:
-            obj = new tabletType(model);
+            obj = new tabletType();
             break;
     }
     return obj;
@@ -31,6 +30,6 @@ export default class ViewFactory extends Factory{
     }
 }
 
-ViewFactory.prototype[CONSTANT.MODEL_TYPES.REGISTER.TYPE] = (data)=>{
-    return createViewByType(RegisterPC, RegisterMobile, RegisterTablet, data);
+ViewFactory.prototype[CONSTANT.TYPES.CHECKOUT] = (data)=>{
+    return createViewByType(CheckoutPC, CheckoutMobile, CheckoutTablet, data);
 }

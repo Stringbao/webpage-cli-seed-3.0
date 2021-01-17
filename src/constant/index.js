@@ -1,20 +1,26 @@
 export default {
-    MODEL_TYPES:{
-        REGISTER:{
-            TYPE:"register"
-        }
+    TYPES:{
+        CHECKOUT:"checkout",
+        SHIPPING:"shipping",
+        ADDRESS:"address",
+        DELIVERY:"delivery",
+        PAYMENT:"payment",
+        REVIEW:"review",
+        PRICE:"price",
+        CARDID:"cardId",
+        ORDER_SUMMARY:"ordersummary",
+        PLACE_ORDER:"placeorder",
+        QUOTE:"quote",
+        SIGN_UP:"signup",
+        PROGRESS:"progress"
     },
     MSG:{
-        NAME_NOT_NULL:"name can not be null",
-        PWD_NOT_NULL:"password can not be null"
-    },
-    SERVICE_NAME:{
-        REGISTER:"RegisterService"
+        
     },
     VIEW:{
         STATUS:{
-            "READY":0,
-            "USING":1,
+            "HIDE":0,
+            "SHOW":1,
             "UNINSTALL":2
         },
         TYPES:{

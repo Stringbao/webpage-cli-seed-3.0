@@ -16,34 +16,34 @@ module.exports = merge(common,{
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: "[name].min.js",
-        library: "leRegister",
+        library: "leCheckout",
         libraryTarget: "umd",
         libraryExport: 'default',
     },
     plugins:[
         new HtmlWebpackPlugin({
-            filename: "pcRegister.html",
-            template: "./src/origin/ejs/pc/pcRegister.ejs",
+            filename: "checkout.html",
+            template: "./src/origin/ejs/pc/pcCheckout.ejs",
             minify: false,
             mode: argv.mode,
             inject: false,
-            chunks:["register"]
+            chunks:["checkout"]
         }),
         new HtmlWebpackPlugin({
-            filename: "mRegister.html",
-            template: "./src/origin/ejs/mobile/mRegister.ejs",
+            filename: "mcheckout.html",
+            template: "./src/origin/ejs/mobile/mCheckout.ejs",
             minify: false,
             mode: argv.mode,
             inject: false,
-            chunks:["mregister"]
+            chunks:["mcheckout"]
         }),
         new HtmlWebpackPlugin({
-            filename: "tRegister.html",
-            template: "./src/origin/ejs/tablet/tRegister.ejs",
+            filename: "tcheckout.html",
+            template: "./src/origin/ejs/tablet/tCheckout.ejs",
             minify: false,
             mode: argv.mode,
             inject: false,
-            chunks:["tregister"]
+            chunks:["tcheckout"]
         }),
         new CleanWebpackPlugin(),
         new SimpleProgressWebpackPlugin()

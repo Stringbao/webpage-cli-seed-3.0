@@ -10,23 +10,32 @@
 
 //services不允许直接调用view
 
+import ViewFactory from "@factory/ViewFactory.js";
+
 class Engine{
     constructor(){
-        this._currentView = null;
-        this._currentPopupViews = [];
+        this._device = -1;
+
+        this._currentMainView = null;
         
         window.$engine = this;
     }
 
     popup(view){
         view.init();
-        this._currentPopupViews.push(view);
     }
 
     show(view){
-        if(view._status == CONSTANT.VIEW.STATUS.READY){
+        if(view._status == CONSTANT.VIEW.STATUS.SHOW){
+            this._currentMainView = view;
             view.init();
         }
+    }
+
+    init(device){
+        this._device = device;
+        this._currentMainView = new ViewFactory().create(CONSTANT.TYPES.CHECKOUT, {device:this._device});
+        this.show(this._currentMainView);
     }
 }
 

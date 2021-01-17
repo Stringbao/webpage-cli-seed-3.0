@@ -2,7 +2,7 @@
 import BaseView from "@model/core/View.js";
 import ModelFactory from "@factory/ModelFactory.js";
 import Intercept from "@observer/Intercept.js";
-import RegisterService from "@modelServices/Register.js";
+import RegisterService from "@businessServices/Register.js";
 import Helper from "@helper/Register.js";
 
 export default class RegisterPCView extends BaseView{

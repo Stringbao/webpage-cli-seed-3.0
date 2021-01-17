@@ -8,9 +8,9 @@ console.log(argv.mode);
 module.exports = {
     context: path.resolve(__dirname, ".."),
     entry: {
-        register: './src/origin/entry/pc/pcRegister.js',
-        mregister: './src/origin/entry/mobile/mRegister.js',
-        tregister: './src/origin/entry/tablet/tRegister.js',
+        checkout: './src/origin/entry/pc/pcCheckout.js',
+        mcheckout: './src/origin/entry/mobile/mCheckout.js',
+        tcheckout: './src/origin/entry/tablet/tCheckout.js',
     },
     module: {
         rules: [
@@ -44,7 +44,7 @@ module.exports = {
             "@assets": path.resolve(__dirname,'..','./src/assets'),
             "@constant":path.resolve(__dirname,"..","./src/constant"),
             "@model":path.resolve(__dirname,"..","./src/main/model"),
-            "@modelServices":path.resolve(__dirname,"..","./src/main/services"),
+            "@businessServices":path.resolve(__dirname,"..","./src/main/services"),
             "@helper":path.resolve(__dirname,"..","./src/main/helper"),
             "@util": path.resolve(__dirname,'..','./src/util'),
             "@observer": path.resolve(__dirname,'..','./src/main/observer'),
@@ -54,7 +54,7 @@ module.exports = {
             "@factory": path.resolve(__dirname,'..','./src/main/factory'),
             "@api": path.resolve(__dirname,'..','./src/api'),
             "@css": path.resolve(__dirname,'..','./src/origin/css'),
-            "@services": path.resolve(__dirname,'..','./src/origin/services')
+            "@originServices": path.resolve(__dirname,'..','./src/origin/services')
         },
         extensions: ['.js','.json']
     },
