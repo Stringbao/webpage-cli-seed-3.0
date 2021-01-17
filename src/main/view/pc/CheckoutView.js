@@ -4,7 +4,7 @@ import CheckoutModel from "@model/Checkout.js";
 import CheckoutService from "@businessServices/Checkout.js";
 import ViewFactory from "@factory/ViewFactory.js";
 
-export default class CheckoutPCView extends BaseView{
+export default class CheckoutView extends BaseView{
     constructor(){
         super();
 

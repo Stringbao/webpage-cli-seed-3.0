@@ -1,6 +1,6 @@
 import BaseModel from "@model/core/Model.js";
 
-export default class Address extends BaseModel{
+export default class ShippingAddress extends BaseModel{
     constructor(){
         this._data = null;
     }

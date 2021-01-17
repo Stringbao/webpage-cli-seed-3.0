@@ -1,6 +1,6 @@
 import BaseView from "@model/core/View.js";
 import ViewFactory from "@factory/ViewFactory.js";
-import Shipping from "@model/subModels/shipping/Shipping.js";
+import Shipping from "@model/Shipping.js";
 
 export default class ShippingView extends BaseView{
     constructor(){
@@ -11,11 +11,11 @@ export default class ShippingView extends BaseView{
 
     init(data){
 
-        this._addressView = new ViewFactory().create(CONSTANT.TYPES.ADDRESS, {device:$engine._device});
-        this._deliveryView = new ViewFactory().create(CONSTANT.TYPES.DELIVERY, {device:$engine._device});
+        this._shippingAddressView = new ViewFactory().create(CONSTANT.TYPES.ADDRESS, {device:$engine._device});
+        this._shippingDeliveryView = new ViewFactory().create(CONSTANT.TYPES.DELIVERY, {device:$engine._device});
 
-        this._addressView.init(data.address, this._shipping);
-        this._deliveryView.init(data.delivery, this._shipping);
+        this._shippingAddressView.init(data.address, this._shipping);
+        this._shippingDeliveryView.init(data.delivery, this._shipping);
     }
 }
 

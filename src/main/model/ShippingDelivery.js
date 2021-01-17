@@ -1,6 +1,6 @@
 import BaseModel from "@model/core/Model.js";
 
-export default class Delivery extends BaseModel{
+export default class ShippingDelivery extends BaseModel{
     constructor(){
         this._deliveryList = [];
     }

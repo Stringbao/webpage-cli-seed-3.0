@@ -1,7 +1,7 @@
 import BaseView from "@model/core/View.js";
 import Delivery from "@model/subModels/shipping/Delivery.js";
 
-export default class DeliveryView extends BaseView{
+export default class ShippingDeliveryView extends BaseView{
     constructor(){
         this._model = new Delivery();
 
@@ -18,7 +18,7 @@ export default class DeliveryView extends BaseView{
     }
 
     init(data, shippingModel){
-        shippingModel._delivery = this._model;
+        shippingModel._shippingDelivery = this._model;
         this._model.init(data);
         this.render();
     }
