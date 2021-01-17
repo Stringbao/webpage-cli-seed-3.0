@@ -35,7 +35,7 @@ module.exports = merge(common, {
     plugins: [
         new HtmlWebpackPlugin({
             filename: "checkout.html",
-            template: "./src/origin/ejs/pc/pcCheckout.ejs",
+            template: "./src/origin/ejs/pcCheckout.ejs",
             chunks: ["checkout", "runtime", "vendors"],
             inject: true,
             mode: argv.mode,
@@ -43,7 +43,7 @@ module.exports = merge(common, {
         }),
         new HtmlWebpackPlugin({
             filename: "mcheckout.html",
-            template: "./src/origin/ejs/mobile/mCheckout.ejs",
+            template: "./src/origin/ejs/mCheckout.ejs",
             chunks: ["mcheckout", "runtime", "vendors"],
             inject: true,
             mode: argv.mode,
@@ -51,7 +51,7 @@ module.exports = merge(common, {
         }),
         new HtmlWebpackPlugin({
             filename: "tcheckout.html",
-            template: "./src/origin/ejs/tablet/tCheckout.ejs",
+            template: "./src/origin/ejs/tCheckout.ejs",
             chunks: ["tcheckout", "runtime", "vendors"],
             inject: true,
             mode: argv.mode,

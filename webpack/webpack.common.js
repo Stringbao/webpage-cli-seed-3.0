@@ -8,9 +8,9 @@ console.log(argv.mode);
 module.exports = {
     context: path.resolve(__dirname, ".."),
     entry: {
-        checkout: './src/origin/entry/pc/pcCheckout.js',
-        mcheckout: './src/origin/entry/mobile/mCheckout.js',
-        tcheckout: './src/origin/entry/tablet/tCheckout.js',
+        checkout: './src/origin/entry/pcCheckout.js',
+        mcheckout: './src/origin/entry/mCheckout.js',
+        tcheckout: './src/origin/entry/tCheckout.js',
     },
     module: {
         rules: [

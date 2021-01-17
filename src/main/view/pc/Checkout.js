@@ -28,6 +28,8 @@ export default class CheckoutPCView extends BaseView{
 
             this._model._price.init(x.price);
             this._model._cardInfo.init(x.cardId);
+        }).catch(err=>{
+            
         })
     }
 }

@@ -5,7 +5,7 @@ class ShippingService{
     }
 
     setShippingData(model){
-        let tmp = flash_fe_core_tool.$customer_events.on("shippingChanged");
+        let tmp = flash_fe_core_tool.$customer_events.on("shipping");
         tmp.setValue(model._data);
     }
 }
