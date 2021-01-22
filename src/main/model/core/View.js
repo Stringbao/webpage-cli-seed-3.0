@@ -1,8 +1,8 @@
 export default class BaseView{
     constructor(model){
         this._el = null;
-        this._model = model;
 
+        //是否启用当前视图
         this._enabled = true;
 
         //0: 隐藏
@@ -12,6 +12,10 @@ export default class BaseView{
         //USUALLY: 常规视图
         //POPUP: popup 视图
         this._type = CONSTANT.VIEW.TYPES.USUALLY;
+    }
+
+    setParentView(parent){
+        this._parent = parent;
     }
 
     //设置视图状态
