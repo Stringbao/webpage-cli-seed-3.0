@@ -64,6 +64,9 @@ module.exports = {
             chunkFilename: '[name].css'
         }),
         new webpack.ProvidePlugin({
+            UTIL: [path.resolve(__dirname,'../src/util/util.js'), "default"],
+        }),
+        new webpack.ProvidePlugin({
             Ajax: [path.resolve(__dirname,'../src/util/http.js'), "default"],
         }),
         new webpack.ProvidePlugin({

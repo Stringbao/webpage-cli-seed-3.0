@@ -1,5 +1,5 @@
 export default class BaseView{
-    constructor(model){
+    constructor(){
         this._el = null;
 
         //是否启用当前视图
@@ -12,10 +12,6 @@ export default class BaseView{
         //USUALLY: 常规视图
         //POPUP: popup 视图
         this._type = CONSTANT.VIEW.TYPES.USUALLY;
-    }
-
-    setParentView(parent){
-        this._parent = parent;
     }
 
     //设置视图状态
@@ -48,31 +44,42 @@ export default class BaseView{
         
     }
 
-    eventBus(callback){
-        let eventNams = ["click", "blur", "input"];
-        eventNams.forEach(ename=>{
-            let tmp = "le" + ename;
-            this._el && this._el.find("["+tmp+"]").each((index, item)=>{
+    eventBus(registerContainer, callback){
+        let eventNams = ["click", "blur", "input", "change"];
+        let temp = registerContainer?registerContainer:this._el;
+        eventNams.forEach(eventName=>{
+            let tmp = "le" + eventName;
+            temp && temp.find("["+tmp+"]").each((index, item)=>{
                 let eventHandlerName = $(item).attr(tmp);
                 (function(dom, eventHandlerName){
-                    callback && callback(dom, ename, eventHandlerName);
+                    callback && callback(dom, eventName, eventHandlerName);
                 })(item, eventHandlerName);
             })
         })
     }
 
-    unRegisterEvent(){
-        this.eventBus((dom, ename, eventHandlerName)=>{
-            $(dom).off(ename);
+    unRegisterEvent(registerContainer){
+        this.eventBus(registerContainer, (dom, eventName)=>{
+            $(dom).off(eventName);
         })
     }
 
-    registerEvent(){
+    registerEvent(registerContainer){
         let that = this;
-        this.eventBus((dom, ename, eventHandlerName)=>{
-            $(dom).off(ename).on(ename, function(){
+        this.eventBus(registerContainer, (dom, eventName, eventHandlerName)=>{
+            console.log($(dom), that);
+            $(dom).off(eventName).on(eventName, function(){
                 that._eventCenter[eventHandlerName](this, {view:that})
             });
         })
+    }
+}
+
+const Helper = {
+    createExistAttribute(dom){
+        $(dom).attr("data-dom-exist-id",UTIL.$idSeed.newId());
+    },
+    checkeExistAttribute(dom){
+        return $(dom).attr("data-dom-exist-id") === undefined?false:true;
     }
 }
